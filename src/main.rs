@@ -158,8 +158,7 @@ fn main() -> Result<(), Box<dyn error::Error>> {
                 Arg::with_name("level")
                     .short("l")
                     .takes_value(true)
-                    .default_value("1")
-                    .required(false),
+                    .default_value("1"),
             ),
         )
         .get_matches();
@@ -173,8 +172,8 @@ fn main() -> Result<(), Box<dyn error::Error>> {
 
     let agent = get_agent(session_key);
 
-    if let Some(_) = matches.subcommand_matches("submit") {
-        let level = matches.value_of("level").unwrap().parse::<u32>()?;
+    if let Some(submit_matches) = matches.subcommand_matches("submit") {
+        let level = submit_matches.value_of("level").unwrap().parse::<u32>()?;
         submit(agent, year, day, level)?;
     } else {
         fetch(agent, year, day)?
