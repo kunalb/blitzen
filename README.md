@@ -1,5 +1,5 @@
 # Blitzen
-A helpful reindeer to fetch inputs from — and submit answers to — Advent of Code quickly. A minimal example:
+A helpful reindeer to fetch inputs from — and submit answers to — [Advent of Code](https://adventofcode.com/) quickly. A minimal example:
 ```
 > bzn | ./solution | bzn submit
 ```
