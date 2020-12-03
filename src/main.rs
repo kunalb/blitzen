@@ -122,12 +122,13 @@ fn main() -> Result<(), Box<dyn error::Error>> {
 
     // Date-time arguments
     let (y, m, d) = get_default_times();
+    let active_advent = m == 12 && d < 26;
     let y = y.to_string();
     let d = d.to_string();
 
     let arg_y = Arg::with_name("year").short("y").takes_value(true);
     let arg_d = Arg::with_name("day").short("d").takes_value(true);
-    let (arg_y, arg_d) = if m == 12 {
+    let (arg_y, arg_d) = if active_advent {
         (arg_y.default_value(&y), arg_d.default_value(&d))
     } else {
         (arg_y.required(true), arg_d.required(true))
