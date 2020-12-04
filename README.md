@@ -4,7 +4,14 @@ A helpful reindeer to fetch inputs from — and submit answers to — [Advent of
 > bzn | ./solution | bzn submit
 ```
 
-## Fetching inputs
+## Installation
+```
+cargo install --git https://github.com/kunalb/blitzen --branch main
+```
+
+## Usage
+
+### Fetching inputs
 Simply specify the year and day for your problem, and Blitzen will print all the inputs to stdout. You'll probably want to pipe the input to your solution.
 ```
 > bzn -y 2020 -d 1 fetch
@@ -16,13 +23,13 @@ Simply specify the year and day for your problem, and Blitzen will print all the
 ```
 (`fetch` is also the default and can be omitted.)
 
-## Submitting results
+### Submitting results
 `bzn submit` reads from stdin and quickly flies it to the North pole: you'll need to specify one more argument here for the level (`-l 1` or `-l 2`); it defaults to 1.
 ```
 echo "solution" | bzn -y 2020 -d 2 submit -l 1
 ```
 
-## Defaults
+### Defaults
 The reindeer is fairly smart, and will default to the latest problem during the advent: and ask you for help after. Run sometime after midnight, eastern time on December 3rd, it defaults to `-y 2020 -d 3` for both fetch and submit.
 ```
 > bzn
@@ -33,7 +40,7 @@ The reindeer is fairly smart, and will default to the latest problem during the 
 (...snipped...)
 ```
 
-## Initializing
+### Initializing
 The very first time you ask Blitzen for help you'll need to pass in your session key, which will then get cached for all future use.
 ```
 bzn -y 2020 -d 4 -s <paste your key here>
@@ -43,7 +50,7 @@ You can look up your key by inspecting the cookies after logging into AoC: copy 
 
 If you want to keep the key out of your shell history, you can also directly create a file at `~/.cache/bzn/session.conf` and paste in the key.
  
-## Config & Cache
+### Config & Cache
 The session key is saved at `~/.cache/bzn/session.conf`:
 ```
 > ls ~/.config/bzn
