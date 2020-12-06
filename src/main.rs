@@ -50,7 +50,14 @@ fn get_session_key_path() -> Box<Path> {
 }
 
 fn get_session_key() -> Result<String, Box<dyn error::Error>> {
-    Ok(fs::read_to_string(get_session_key_path())?)
+    match fs::read_to_string(get_session_key_path()) {
+        Ok(val) if !val.trim().is_empty() => Ok(val),
+        Ok(_) => Err(Box::new(io::Error::new(
+            io::ErrorKind::Other,
+            "Empty session key",
+        ))),
+        Err(e) => Err(Box::new(e)),
+    }
 }
 
 fn save_session_key(session_key: &str) -> Result<(), Box<dyn error::Error>> {
