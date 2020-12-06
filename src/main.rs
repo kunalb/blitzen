@@ -153,10 +153,19 @@ fn main() -> Result<(), Box<dyn error::Error>> {
         Err(_) => arg_s.required(true),
     };
 
-    let matches = App::new("Bliten (bzn)")
+    let matches = App::new("Blitzen (bzn)")
         .version("0.1")
         .author("Kunal Bhalla <bhalla.kunal@gmail.com>")
-        .about("Fetches inputs and submits results for Advent of Code")
+        .about(r#"
+        (         )
+         \(     )/     Blitzen
+          \(   )/      -------
+        (\ )---( /)    A helpful reindeer to fetch inputs from & 
+          / a c \      submit solutions to Advent of Code.
+          (  o  )
+           \ ‿ /
+"#,
+        )
         .arg(arg_s)
         .arg(arg_y)
         .arg(arg_d)
