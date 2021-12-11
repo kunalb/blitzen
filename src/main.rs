@@ -102,7 +102,7 @@ fn submit(
     let path = format!("https://adventofcode.com/{}/day/{}/answer", year, day);
     let resp = agent
         .post(&path)
-        .send_form(&[("level", &level.to_string()), ("answer", &buffer)]);
+        .send_form(&[("level", &level.to_string()), ("answer", &buffer.trim())]);
 
     eprintln!("(Posting `{}` to {}: {:?})\n", buffer.trim(), path, resp);
     let re = Regex::new(r#"<main>((?s:.)*?)</main>"#)?;
@@ -160,7 +160,7 @@ fn main() -> Result<(), Box<dyn error::Error>> {
         (         )
          \(     )/     Blitzen
           \(   )/      -------
-        (\ )---( /)    A helpful reindeer to fetch inputs from & 
+        (\ )---( /)    A helpful reindeer to fetch inputs from &
           / a c \      submit solutions to Advent of Code.
           (  o  )
            \ ‿ /
